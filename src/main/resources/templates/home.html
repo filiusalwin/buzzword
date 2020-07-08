@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Buzzword Overview</title>
+    <link rel="stylesheet" type="text/css" href="library.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Buzzword</h1>
+<table>
+    <tr>
+        <th>Buzzwordbingo</th>
+        <th></th>
+        <th># of Buzzwords</th>
+
+    </tr>
+    <tr th:each="theme: ${allThemes}">
+        <td th:text="${theme.name}" />
+
+    </tr>
+</table>
+
+<div>
+    <a th:href="@{/theme/add}">Add Theme</a>
+</div>
+
+
+
+<div sec:authorize="hasRole('ADMIN')"><!-- extra dependency! thymeleaf-extras-springsecurity5 -->
+    <a th:href="@{/user/new}">Add user</a>
+</div>
+
+<div>
+    <a th:href="@{/logout}">Log out</a>
+</div>
+</body>
+</html>

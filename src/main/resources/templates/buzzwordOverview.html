@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>BuzzWord Bing: maak je eigen bingokaart</title>
+    <link rel="stylesheet" type="text/css" href="library.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Buzzword</h1>
+
+<h2>Overview of existing Buzzwords in <td th:text="${theme.name}" /></h2>
+
+<table>
+    <tr>
+        <th>Buzzwords</th>
+        <th># of Buzzwords</th>
+        <th>Create/Edit the buzzword</th>
+    </tr>
+    <tr th:each="bw: ${allBuzzwords}">
+        <td th:text="${bw.buzzWordString}" />
+
+    </tr>
+</table>
+
+
+<h3> Add a new Buzzword </h3>
+<form action="#" th:action="@{/buzzword/new}" th:object="${buzzword}" method="post">
+    <p>Buzzword name: <input type="text" th:field="*{buzzWordString}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>
